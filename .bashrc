@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 #env vars
-export VISUAL="nvim"
+export VISUAL="vim"
 
 
 
@@ -95,7 +95,7 @@ alias lh='ls -lh --color=auto'
 alias la='ls -A'
 alias l='ls -CF'
 alias vi='vim'
-alias vim='nvim'
+alias vim='vim'
 
 [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 
