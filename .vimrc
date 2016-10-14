@@ -8,8 +8,6 @@ set ignorecase
 set smartcase
 set splitright
 
-"airline
-set laststatus=2
 
 
 
@@ -26,9 +24,11 @@ set showmatch "show the matching {}[]()
 set incsearch "search as characters are entered
 set hlsearch "hilight searches
 
-
+"airline
 "set list          " Display unprintable characters f12 - switches
 "set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
 
 let mapleader="," "is the same as ols esc shortcut?
 nnoremap <leader><space> :nohlsearch<CR>
