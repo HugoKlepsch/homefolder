@@ -9,6 +9,10 @@ set smartcase
 set splitright
 
 
+if has("autocmd") "for make files tab carppiness
+    filetype plugin indent on
+    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+endif
 
 
 set tabstop=4 "tabs appear as four spaces
@@ -38,9 +42,16 @@ nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 " For global replace
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
-if has("autocmd") "for make files tab carppiness
-    filetype plugin indent on
-    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
-endif
 
 execute pathogen#infect()
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
+    w
+endfun
+:noremap <Leader>w :call TrimWhitespace()<CR>
+
+
+
