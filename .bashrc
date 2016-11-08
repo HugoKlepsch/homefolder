@@ -74,9 +74,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -88,21 +85,15 @@ export VISUAL="vim"
 
 
 # some more ls aliases
-alias ll='ls -alh --color=auto'
+alias ll='ls -lh --color=auto'
 alias lh='ls -lh --color=auto'
-alias la='ls -A'
+alias la='ls -alh --color=auto'
 alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
 
 [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 
-#alias get='sudo apt-get install'
-#alias upd='sudo apt-get update'
-#alias upgr='sudo apt-get upgrade'
-#alias purge='sudo apt-get purge'
-#alias gpuoff='sudo tee /proc/acpi/bbswitch <<<OFF'
-#alias gpuon='sudo tee /proc/acpi/bbswitch <<<ON'
 alias resetswap='sudo swapoff -a && sudo swapon -a'
 
 # Add an "alert" alias for long running commands.  Use like so:
