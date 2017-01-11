@@ -90,9 +90,9 @@ export VISUAL="vim"
 
 
 # some more ls aliases
-alias ll='ls -alh --color=auto'
+alias ll='ls -lh --color=auto'
 alias lh='ls -lh --color=auto'
-alias la='ls -A'
+alias la='ls -alh --color=auto'
 alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
