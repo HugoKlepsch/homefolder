@@ -1,3 +1,17 @@
+
+set tabstop=4 "tabs appear as four spaces
+set shiftwidth=4
+set softtabstop=4 "The number of spaces a tab counts for when editing
+set expandtab "tabs are spaces
+
+
+if has("autocmd") "for make files tab carppiness
+    filetype plugin indent on
+    autocmd!
+    autocmd FileType make setlocal tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    autocmd FileType fortran setlocal tabstop=6 shiftwidth=6 expandtab softtabstop=6
+endif
+
 syntax enable
 "set background=dark
 "let g:solarized_termcolors=16
@@ -8,17 +22,6 @@ set ignorecase
 set smartcase
 set splitright
 
-
-if has("autocmd") "for make files tab carppiness
-    filetype plugin indent on
-    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
-endif
-
-
-set tabstop=4 "tabs appear as four spaces
-set shiftwidth=4
-set softtabstop=4 "The number of spaces a tab counts for when editing
-set expandtab "tabs are spaces
 
 set number "show line numbers
 set showcmd "show the command at the bottom
