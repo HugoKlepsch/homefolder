@@ -23,6 +23,7 @@ set smartcase
 set splitright
 
 
+
 set number "show line numbers
 set showcmd "show the command at the bottom
 set cursorline "the cursor line now has a highlight
@@ -30,6 +31,9 @@ set wildmenu "visual autocomplete for command menu
 set showmatch "show the matching {}[]()
 set incsearch "search as characters are entered
 set hlsearch "hilight searches
+
+"change cursorline from underline to highlight
+hi Cursorline cterm=NONE ctermbg=darkred ctermfg=white
 
 "airline
 "set list          " Display unprintable characters f12 - switches
