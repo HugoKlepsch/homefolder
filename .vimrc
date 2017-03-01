@@ -33,7 +33,7 @@ set incsearch "search as characters are entered
 set hlsearch "hilight searches
 
 "change cursorline from underline to highlight
-hi Cursorline cterm=NONE ctermbg=darkred ctermfg=white
+"hi Cursorline cterm=NONE ctermbg=darkred ctermfg=white
 
 "airline
 "set list          " Display unprintable characters f12 - switches
