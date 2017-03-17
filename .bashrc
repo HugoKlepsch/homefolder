@@ -1,4 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
+export TERM=xterm-termite
 
 # If not running interactively, don't do anything
 case $- in
@@ -91,6 +92,8 @@ alias la='ls -alh --color=auto'
 alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
+
+alias open='xdg-open'
 
 [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 
