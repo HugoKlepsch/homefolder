@@ -21,6 +21,7 @@ set ruler
 set ignorecase
 set smartcase
 set splitright
+colo default
 
 
 
