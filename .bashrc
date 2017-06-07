@@ -1,5 +1,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-export TERM=xterm-termite
+#export TERM=xterm-termite
+export TERM=xterm-256color
 
 # If not running interactively, don't do anything
 case $- in
@@ -92,10 +93,11 @@ alias la='ls -alh --color=auto'
 alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
+alias gp='git pull && git submodule update --init --recursive && cp build-scripts/git/hooks/* .git/hooks/'
 
 alias open='xdg-open'
 
-[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+#[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 
 alias resetswap='sudo swapoff -a && sudo swapon -a'
 

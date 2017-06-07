@@ -5,11 +5,13 @@ set softtabstop=4 "The number of spaces a tab counts for when editing
 set expandtab "tabs are spaces
 
 
-if has("autocmd") "for make files tab carppiness
+if has("autocmd") "for make files that require tab
     filetype plugin indent on
     autocmd!
     autocmd FileType make setlocal tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
     autocmd FileType fortran setlocal tabstop=6 shiftwidth=6 expandtab softtabstop=6
+    autocmd FileType bash setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType sh setlocal expandtab shiftwidth=2 softtabstop=2
 endif
 
 syntax enable
@@ -21,9 +23,9 @@ set ruler
 set ignorecase
 set smartcase
 set splitright
-colo default
+colo darkblue
 
-
+set spell
 
 set number "show line numbers
 set showcmd "show the command at the bottom
@@ -32,6 +34,7 @@ set wildmenu "visual autocomplete for command menu
 set showmatch "show the matching {}[]()
 set incsearch "search as characters are entered
 set hlsearch "hilight searches
+set noshowmode "don't show -- INSERT -- at bottom of screen
 
 "change cursorline from underline to highlight
 "hi Cursorline cterm=NONE ctermbg=darkred ctermfg=white
@@ -45,10 +48,9 @@ set laststatus=2
 "set guifont=Liberation\ Mono\ 10
 "let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
+  let g:airline_symbols = {}
 
-  " unicode symbols
+" unicode symbols
   let g:airline_left_sep = '»'
   let g:airline_left_sep = '▶'
   let g:airline_right_sep = '«'
@@ -61,6 +63,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols.paste = 'Þ'
   let g:airline_symbols.paste = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
+endif
 
 let mapleader="," "is the same as ols esc shortcut?
 nnoremap <leader><space> :nohlsearch<CR>
@@ -69,6 +72,22 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 " For global replace
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+" For finding git merge tags
+nnoremap <leader>r /\(<<<\+\)\\|\(>>>\+\)\\|\(====\+\)
+
+" For spellcheck toggle
+" Toggle spellchecking
+function! ToggleSpellCheck()
+    set spell!
+    if &spell
+        echo "Spellcheck ON"
+    else
+        echo "Spellcheck OFF"
+    endif
+endfunction
+
+nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 
 
 execute pathogen#infect()

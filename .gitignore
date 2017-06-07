@@ -3,3 +3,6 @@
 !.bash*
 .bash_*
 !.gitignore
+!.vimrc
+!.ctags
+!.vim/*
