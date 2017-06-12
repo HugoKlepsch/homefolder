@@ -23,7 +23,7 @@ set ruler
 set ignorecase
 set smartcase
 set splitright
-colo darkblue
+colo default
 
 set spell
 

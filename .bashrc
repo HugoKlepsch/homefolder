@@ -84,12 +84,17 @@ fi
 #env vars
 export VISUAL="vim"
 
-
-
 # some more ls aliases
 alias ll='ls -lh --color=auto'
 alias lh='ls -lh --color=auto'
 alias la='ls -alh --color=auto'
+
+cdls(){
+  cd $1
+  ll
+}
+
+alias cd='cdls'
 alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
