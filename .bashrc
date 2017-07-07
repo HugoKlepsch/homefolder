@@ -2,6 +2,9 @@
 #export TERM=xterm-termite
 export TERM=xterm-256color
 
+export ANDROID_HOME='/home/hugo/Android/Sdk'
+export ANDROID_NDK_HOME='/home/hugo/Android/Sdk/ndk-bundle'
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -91,7 +94,10 @@ alias la='ls -alh --color=auto'
 
 cdls(){
   cd $1
-  ll
+  RET=$?
+  if [[ ${RET} -ne 1 ]]; then
+    ll
+  fi
 }
 
 alias cd='cdls'
@@ -99,6 +105,16 @@ alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
 alias gp='git pull && git submodule update --init --recursive && cp build-scripts/git/hooks/* .git/hooks/'
+
+alias tetris='telnet kirjava.xyz'
+
+#kubernetes garbo
+alias kubeenv='eval $(minikube docker-env)'
+alias unkubeenv='unset DOCKER_TLS_VERIFY && unset DOCKER_HOST && unset DOCKER_CERT_PATH && unset DOCKER_API_VERSION'
+
+#docker garbo
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 
 alias open='xdg-open'
 

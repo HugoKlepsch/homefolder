@@ -16,3 +16,5 @@ HelloWorld
 middleware
 username
 hostname
+RabbitMQ
+Couchbase
