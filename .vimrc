@@ -22,10 +22,10 @@ filetype plugin indent on
 set ruler
 set ignorecase
 set smartcase
-set splitright
+set splitright "default virtual split
 colo default
 
-set spell
+set spell "spellcheck
 
 set number "show line numbers
 set showcmd "show the command at the bottom
@@ -35,6 +35,8 @@ set showmatch "show the matching {}[]()
 set incsearch "search as characters are entered
 set hlsearch "hilight searches
 set noshowmode "don't show -- INSERT -- at bottom of screen
+
+set tags=./tags;,tags;,./.tags;,.tags;
 
 "change cursorline from underline to highlight
 "hi Cursorline cterm=NONE ctermbg=darkred ctermfg=white

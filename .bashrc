@@ -93,7 +93,7 @@ alias lh='ls -lh --color=auto'
 alias la='ls -alh --color=auto'
 
 cdls(){
-  cd $1
+  [[ -z "${1}" ]] && cd || cd "${1}"
   RET=$?
   if [[ ${RET} -ne 1 ]]; then
     ll
