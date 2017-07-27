@@ -1,8 +1,1 @@
-*
-!.config/nvim/*
-!.bash*
-.bash_*
-!.gitignore
-!.vimrc
-!.ctags
-!.vim/*
+*.swp

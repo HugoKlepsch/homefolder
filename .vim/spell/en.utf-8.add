@@ -18,3 +18,4 @@ username
 hostname
 RabbitMQ
 Couchbase
+Kubernetes

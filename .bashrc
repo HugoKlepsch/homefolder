@@ -5,6 +5,10 @@ export TERM=xterm-256color
 export ANDROID_HOME='/home/hugo/Android/Sdk'
 export ANDROID_NDK_HOME='/home/hugo/Android/Sdk/ndk-bundle'
 
+# So that less can display emoji
+export LESSCHARSET=utf-8
+alias less='less -r'
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -108,15 +112,21 @@ alias gp='git pull && git submodule update --init --recursive && cp build-script
 
 alias tetris='telnet kirjava.xyz'
 
-#kubernetes garbo
+# Kubernetes garbo
 alias kubeenv='eval $(minikube docker-env)'
 alias unkubeenv='unset DOCKER_TLS_VERIFY && unset DOCKER_HOST && unset DOCKER_CERT_PATH && unset DOCKER_API_VERSION'
 
-#docker garbo
+# Docker garbo
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 
 alias open='xdg-open'
+
+# Trash
+alias tr='trash'
+
+# Git aliases
+alias gl='git log --color --pretty=format:"%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar) %Creset%C(auto)%d"'
 
 #[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
 
@@ -153,3 +163,10 @@ export PATH=$COCOS_CONSOLE_ROOT:$PATH
 # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
 export COCOS_TEMPLATES_ROOT=/home/hugo/Documents/c_sharting/gameEngine/cocos2d-x/templates
 export PATH=$COCOS_TEMPLATES_ROOT:$PATH
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash

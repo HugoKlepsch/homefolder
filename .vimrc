@@ -91,6 +91,19 @@ endfunction
 
 nnoremap <silent> <Leader>s :call ToggleSpellCheck()<CR>
 
+let g:hexmode_tog = 0
+function! ToggleHexMode()
+    if g:hexmode_tog
+        %!xxd -r
+        let g:hexmode_tog = 0
+    else
+        %!xxd
+        let g:hexmode_tog = 1
+    endif
+endfunction
+
+" go hex mode
+nnoremap <silent> <Leader>h :call ToggleHexMode()<CR>
 
 execute pathogen#infect()
 
