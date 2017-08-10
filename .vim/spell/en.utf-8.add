@@ -19,3 +19,6 @@ hostname
 RabbitMQ
 Couchbase
 Kubernetes
+stdout
+stderr
+apt

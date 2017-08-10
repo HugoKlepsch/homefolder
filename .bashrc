@@ -21,6 +21,7 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s globstar
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
@@ -45,6 +46,7 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
+    xterm-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -97,7 +99,12 @@ alias lh='ls -lh --color=auto'
 alias la='ls -alh --color=auto'
 
 cdls(){
-  [[ -z "${1}" ]] && cd || cd "${1}"
+  if [[ -z "${1}" ]]; then
+    cd ~
+  else
+    cd "${1}"
+  fi
+
   RET=$?
   if [[ ${RET} -ne 1 ]]; then
     ll
