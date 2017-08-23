@@ -1,0 +1,12 @@
+[submodule "vim-airline"]
+    path = vim-airline
+    url = https://github.com/vim-airline/vim-airline
+[submodule "Jenkinsfile-vim-syntax"]
+    path = Jenkinsfile-vim-syntax
+    url = https://github.com/martinda/Jenkinsfile-vim-syntax
+[submodule "typescript-vim"]
+    path = typescript-vim
+    url = https://github.com/leafgarland/typescript-vim.git
+[submodule "vim-javascript"]
+    path = vim-javascript
+    url = https://github.com/pangloss/vim-javascript.git

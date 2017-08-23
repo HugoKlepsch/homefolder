@@ -9,8 +9,10 @@ if has("autocmd") "for make files that require tab
     filetype plugin indent on
     autocmd!
     autocmd FileType make setlocal tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    autocmd FileType gitconfig setlocal tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
     autocmd FileType fortran setlocal tabstop=6 shiftwidth=6 expandtab softtabstop=6
     autocmd FileType bash setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd FileType sh setlocal expandtab shiftwidth=2 softtabstop=2
 endif
 
@@ -24,6 +26,8 @@ set ignorecase
 set smartcase
 set splitright "default virtual split
 colo default
+
+set tabpagemax=100 " Open up to 100 tabs
 
 set spell "spellcheck
 
