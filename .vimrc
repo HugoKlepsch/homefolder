@@ -29,6 +29,8 @@ colo default
 
 set tabpagemax=100 " Open up to 100 tabs
 
+set hidden " Better buffer browsing
+
 set spell "spellcheck
 
 set number "show line numbers
@@ -78,6 +80,13 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 " For global replace
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
+" list buffers and get ready to go
+nnoremap <Leader>b :ls<CR>:b<Space>
+
+" Buffer cycling
+map <C-K> :bnext<CR>
+map <C-J> :bprev<CR>
 
 " For finding git merge tags
 nnoremap <leader>r /\(<<<\+\)\\|\(>>>\+\)\\|\(====\+\)

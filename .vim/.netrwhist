@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/hugo/l/Linphone/linphoneApkHockey/324'
 let g:netrw_dirhist_2='/home/hugo/l/iAce/CarnegieWAM'
 let g:netrw_dirhist_3='/home/hugo/l/NcpDemos/BandwidthAggregationDemo/HockeyAppApk'
 let g:netrw_dirhist_4='/home/hugo/l/IotCoreServices/deviceJoin'
 let g:netrw_dirhist_5='/home/hugo/l/IotHubCloudCore/development_environment/k8s/prometheus'
 let g:netrw_dirhist_6='/home/hugo/l/ServicesCommon/development_environment/k8s/prometheus'
+let g:netrw_dirhist_7='/home/hugo/l/IotCoreServices/hubRemoteMetrics/test'
+let g:netrw_dirhist_8='/home/hugo/l/IotCoreServices/deviceData/src/deviceData'
+let g:netrw_dirhist_9='/home/hugo/l/IotCoreServices/deviceData/src'
