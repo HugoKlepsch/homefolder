@@ -84,9 +84,11 @@ nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 " list buffers and get ready to go
 nnoremap <Leader>b :ls<CR>:b<Space>
 
-" Buffer cycling
-map <C-K> :bnext<CR>
-map <C-J> :bprev<CR>
+" tab cycling
+map <C-K> :tabn<CR>
+map <C-J> :tabp<CR>
+" map <C-K> :bnext<CR>
+" map <C-J> :bprev<CR>
 
 " For finding git merge tags
 nnoremap <leader>r /\(<<<\+\)\\|\(>>>\+\)\\|\(====\+\)
