@@ -27,6 +27,10 @@ set smartcase
 set splitright "default virtual split
 colo default
 
+" Change misspell and search highlight colors
+hi SpellBad cterm=bold ctermfg=0 ctermbg=255 gui=undercurl guisp=Red
+hi Search ctermfg=0 ctermbg=130
+
 set tabpagemax=100 " Open up to 100 tabs
 
 set hidden " Better buffer browsing
