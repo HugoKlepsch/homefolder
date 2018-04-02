@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/etc/resolvconf/update-libc.d'
 let g:netrw_dirhist_2='/etc/resolvconf/update.d'
 let g:netrw_dirhist_3='/home/hugo/l/IotTag'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/hugo/l/Docker/ubuntu-build-basic-amd64'
 let g:netrw_dirhist_6='/home/hugo/l/Docker/ubuntu-build-basic-amd64/trusty'
 let g:netrw_dirhist_7='/home/hugo/l/Docker/ubuntu-i386'
 let g:netrw_dirhist_8='/home/hugo/l/Docker/ubuntu-i386/trusty'
+let g:netrw_dirhist_9='/home/hugo/git/coopWebsiteCarnegie1/renderTemplates'

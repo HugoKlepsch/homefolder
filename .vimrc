@@ -3,7 +3,7 @@ set tabstop=4 "tabs appear as four spaces
 set shiftwidth=4
 set softtabstop=4 "The number of spaces a tab counts for when editing
 set expandtab "tabs are spaces
-
+set exrc " Auto local vimrcs
 
 if has("autocmd") "for make files that require tab
     filetype plugin indent on
