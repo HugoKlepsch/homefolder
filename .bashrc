@@ -98,6 +98,10 @@ alias ll='ls -lh --color=auto'
 alias lh='ls -lh --color=auto'
 alias la='ls -alh --color=auto'
 
+function editconflicts() { 
+  vim -p $( git diff --name-only --diff-filter=U | xargs )
+}
+
 cdls(){
   if [[ -z "${1}" ]]; then
     cd ~
