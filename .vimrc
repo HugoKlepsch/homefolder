@@ -1,9 +1,17 @@
+" DEFAULT TAB BEHAVIOUR {{{
 
-set tabstop=4 "tabs appear as four spaces
+" Convert tabs to spaces
+set expandtab
+
+" Set tab size in spaces (this is for manual indenting)
+set tabstop=4
+
+" The number of spaces inserted for a tab (used for auto indenting)
 set shiftwidth=4
-set softtabstop=4 "The number of spaces a tab counts for when editing
-set expandtab "tabs are spaces
-set exrc " Auto local vimrcs
+
+"The number of spaces a tab counts for when editing
+set softtabstop=4
+" }}}
 
 if has("autocmd") "for make files that require tab
     filetype plugin indent on
@@ -16,15 +24,114 @@ if has("autocmd") "for make files that require tab
     autocmd FileType sh setlocal expandtab shiftwidth=2 softtabstop=2
 endif
 
+" Settings {{{
+"
+" Switch syntax highlighting on, when the terminal has colors
 syntax enable
+
+" Use vim, not vi api
+set nocompatible
+
+" Command history
+set history=100
+
+" Always show cursor
+set ruler
+
+" Show incomplete commands
+set showcmd
+
+" Incremental searching (search as you type)
+set incsearch
+
+" Highlight search matches
+set hlsearch
+
+" Ignore case in search
+set smartcase
+
+" Make sure any searches /searchPhrase doesn't need the \c escape character
+set ignorecase
+
+" A buffer is marked as ‘hidden’ if it has unsaved changes, and it is not currently loaded in a window
+" if you try and quit Vim while there are hidden buffers, you will raise an error:
+" E162: No write since last change for buffer “a.txt”
+set hidden
+
+" Turn word wrap on
+set wrap
+
+" Break lines on word boundaries
+set linebreak
+
+" Don't indent broken lines
+set nobreakindent
+
+" Mark broken lines with "> "
+let &showbreak = '~~~> '
+
+" Allow backspace to delete end of line, indent and start of line characters
+set backspace=indent,eol,start
+
+
+" Turn on line numbers
+set number
+
+" Highlight tailing whitespace
+" See issue: https://github.com/Integralist/ProVim/issues/4
+set list listchars=tab:\ \ ,trail:·
+
+" Get rid of the delay when pressing O (for example)
+" http://stackoverflow.com/questions/2158516/vim-delay-before-o-opens-a-new-line
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Always show status bar
+set laststatus=2
+
+" Set the status line to something useful
+set statusline=%f\ %=L:%l/%L\ %c\ (%p%%)
+
+" Hide the toolbar
+set guioptions-=T
+
+" UTF encoding
+set encoding=utf-8
+
+" Better splits (new windows appear below and to the right)
+set splitbelow
+set splitright
+
+" Highlight the current line
+set cursorline
+
+" Auto load local vimrcs
+set exrc
+
+" Ensure Vim doesn't beep at you every time you make a mistype
+set visualbell
+
+" Visual autocomplete for command menu (e.g. :e ~/path/to/file)
+set wildmenu
+
+" redraw only when we need to (i.e. don't redraw when executing a macro)
+set lazyredraw
+
+" highlight a matching [{()}] when cursor is placed on start/end character
+set showmatch
+
+" Set built-in file system explorer to use layout similar to the NERDTree plugin
+let g:netrw_liststyle=3
+
+" Always highlight column 80 so it's easier to see where
+" cutoff appears on longer screens
+autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
+set colorcolumn=80
+" }}}
+
 "set background=dark
 "let g:solarized_termcolors=16
 "colorscheme solarized
 filetype plugin indent on
-set ruler
-set ignorecase
-set smartcase
-set splitright "default virtual split
 colo default
 
 " Change misspell and search highlight colors
@@ -33,29 +140,15 @@ hi Search ctermfg=0 ctermbg=130
 
 set tabpagemax=100 " Open up to 100 tabs
 
-set hidden " Better buffer browsing
-
 set spell "spellcheck
 
-set number "show line numbers
-set showcmd "show the command at the bottom
-set cursorline "the cursor line now has a highlight
-set wildmenu "visual autocomplete for command menu
-set showmatch "show the matching {}[]()
-set incsearch "search as characters are entered
-set hlsearch "hilight searches
 set noshowmode "don't show -- INSERT -- at bottom of screen
 
 set tags=./tags;,tags;,./.tags;,.tags;
 
-"change cursorline from underline to highlight
-"hi Cursorline cterm=NONE ctermbg=darkred ctermfg=white
-
 "airline
-"set list          " Display unprintable characters f12 - switches
 "set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
 "set guifont=Liberation\ Mono\ for\ Powerline\ 10
 "set guifont=Liberation\ Mono\ 10
 "let g:airline_powerline_fonts=1

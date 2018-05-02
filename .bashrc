@@ -1,5 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-#export TERM=xterm-termite
 export TERM=xterm-256color
 
 export ANDROID_HOME='/home/hugo/Android/Sdk'
@@ -142,22 +140,7 @@ alias tr='trash'
 # Git aliases
 alias gl='git log --color --pretty=format:"%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar) %Creset%C(auto)%d"'
 
-#[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
-
 alias resetswap='sudo swapoff -a && sudo swapon -a'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -169,14 +152,6 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
-
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/home/hugo/Documents/c_sharting/gameEngine/cocos2d-x/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
-
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=/home/hugo/Documents/c_sharting/gameEngine/cocos2d-x/templates
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
