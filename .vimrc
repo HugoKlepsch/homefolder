@@ -107,8 +107,9 @@ set cursorline
 " Auto load local vimrcs
 set exrc
 
-" Ensure Vim doesn't beep at you every time you make a mistype
-set visualbell
+" Ensure Vim doesn't flash at you every time you make a mistype
+" Beeping is ok
+set novisualbell
 
 " Visual autocomplete for command menu (e.g. :e ~/path/to/file)
 set wildmenu
