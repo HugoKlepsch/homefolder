@@ -118,6 +118,7 @@ alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
 alias gp='git pull && git submodule update --init --recursive && cp build-scripts/git/hooks/* .git/hooks/'
+alias dong='printf "\a"'
 
 alias tetris='telnet kirjava.xyz'
 
