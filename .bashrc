@@ -1,11 +1,18 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#export TERM=xterm-termite
+export TERM=xterm-256color
+
+export ANDROID_HOME='/home/hugo/Android/Sdk'
+export ANDROID_NDK_HOME='/home/hugo/Android/Sdk/ndk-bundle'
+
+# So that less can display emoji
+export LESSCHARSET=utf-8
+alias less='less -r'
 
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+    *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -14,10 +21,11 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s globstar
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -38,6 +46,7 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
+    xterm-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -47,12 +56,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -65,20 +74,17 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
+    xterm*|rxvt*)
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
+    *)
+        ;;
 esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -87,24 +93,59 @@ fi
 #env vars
 export VISUAL="vim"
 
-
-
 # some more ls aliases
 alias ll='ls -lh --color=auto'
 alias lh='ls -lh --color=auto'
 alias la='ls -alh --color=auto'
+
+function editconflicts() { 
+  vim -p $( git diff --name-only --diff-filter=U | xargs )
+}
+
+cdls(){
+  if [[ -z "${1}" ]]; then
+    cd ~
+  else
+    cd "${1}"
+  fi
+
+  RET=$?
+  if [[ ${RET} -ne 1 ]]; then
+    ll
+  fi
+}
+
+alias cd='cdls'
 alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
+alias gp='git pull && git submodule update --init --recursive && cp build-scripts/git/hooks/* .git/hooks/'
 
-[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+alias tetris='telnet kirjava.xyz'
 
-#alias get='sudo apt-get install'
-#alias upd='sudo apt-get update'
-#alias upgr='sudo apt-get upgrade'
-#alias purge='sudo apt-get purge'
-#alias gpuoff='sudo tee /proc/acpi/bbswitch <<<OFF'
-#alias gpuon='sudo tee /proc/acpi/bbswitch <<<ON'
+# Kubernetes garbo
+alias kubeenv='eval $(minikube docker-env)'
+alias unkubeenv='unset DOCKER_TLS_VERIFY && unset DOCKER_HOST && unset DOCKER_CERT_PATH && unset DOCKER_API_VERSION'
+if /usr/bin/env kubectl >/dev/null 2>&1; then
+  source <(kubectl completion bash)
+fi
+
+# Docker garbo
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+
+alias open='xdg-open'
+
+# Trash
+alias tr='trash'
+
+# Git aliases
+alias gl='git log --color --pretty=format:"%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar)"'
+alias gs='git status'
+alias gd='git diff'
+
+#[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+
 alias resetswap='sudo swapoff -a && sudo swapon -a'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -124,17 +165,10 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
-# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/home/hugo/Documents/c_sharting/gameEngine/cocos2d-x/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
-
-# Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-export COCOS_TEMPLATES_ROOT=/home/hugo/Documents/c_sharting/gameEngine/cocos2d-x/templates
-export PATH=$COCOS_TEMPLATES_ROOT:$PATH
