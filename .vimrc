@@ -22,6 +22,13 @@ if has("autocmd") "for make files that require tab
     autocmd FileType bash setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd FileType sh setlocal expandtab shiftwidth=2 softtabstop=2
+    autocmd FileType vue setlocal autoindent shiftwidth=2 softtabstop=2 expandtab
+    autocmd FileType vue syntax sync fromstart
+
+    " auto folding
+    " Toggles fold rememberance emulation
+    autocmd BufRead * setlocal foldmethod=marker
+    autocmd BufRead * normal zM
 endif
 
 " Settings {{{
@@ -123,10 +130,13 @@ set showmatch
 " Set built-in file system explorer to use layout similar to the NERDTree plugin
 let g:netrw_liststyle=3
 
+" vue scss
+let g:vue_disable_pre_processors=1
+
 " Always highlight column 80 so it's easier to see where
 " cutoff appears on longer screens
-autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
-set colorcolumn=80
+" autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
+" set colorcolumn=80
 " }}}
 
 "set background=dark
