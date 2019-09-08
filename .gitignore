@@ -4,3 +4,4 @@
 .bash_*
 !.gitignore
 !.vimrc
+*.sw*
