@@ -4,7 +4,7 @@
 set expandtab
 
 " Set tab size in spaces (this is for manual indenting)
-set tabstop=4
+set tabstop=4 "tabs appear as four spaces
 
 " The number of spaces inserted for a tab (used for auto indenting)
 set shiftwidth=4
@@ -152,7 +152,6 @@ hi Search ctermfg=0 ctermbg=130
 set tabpagemax=100 " Open up to 100 tabs
 
 set spell "spellcheck
-
 set noshowmode "don't show -- INSERT -- at bottom of screen
 
 set tags=./tags;,tags;,./.tags;,.tags;

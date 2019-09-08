@@ -121,13 +121,6 @@ alias dong='printf "\a"'
 
 alias tetris='telnet kirjava.xyz'
 
-# Kubernetes garbo
-alias kubeenv='eval $(minikube docker-env)'
-alias unkubeenv='unset DOCKER_TLS_VERIFY && unset DOCKER_HOST && unset DOCKER_CERT_PATH && unset DOCKER_API_VERSION'
-if /usr/bin/env kubectl >/dev/null 2>&1; then
-  source <(kubectl completion bash)
-fi
-
 # Docker garbo
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
@@ -154,13 +147,6 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
 : <<'END_COMMENT'
 export NVM_DIR="$HOME/.nvm"
