@@ -128,7 +128,7 @@ alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=sta
 alias open='xdg-open'
 
 # Trash
-alias tr='trash'
+#alias tr='trash'
 
 # Git aliases
 alias gl='git log --color --pretty=format:"%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar)"'
