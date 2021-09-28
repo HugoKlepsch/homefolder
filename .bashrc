@@ -96,7 +96,7 @@ alias ll='ls -lh -G'
 alias lh='ls -lh -G'
 alias la='ls -alh -G'
 
-function editconflicts() { 
+function editconflicts() {
   vim -p $( git diff --name-only --diff-filter=U | xargs )
 }
 
@@ -138,8 +138,17 @@ alias gd='git diff'
 alias resetswap='sudo swapoff -a && sudo swapon -a'
 
 # Work aliases
-function buildit { pack setup "${1}" && pack build "${1}" && pack package "${1}" && pack publish "${1}" ; printf "\a" }
-function commit_in { git fetch --tags -f -p; git describe $1 --tags --match "ci-0.*" --abbrev=0 --contains; }
+function buildit {
+  pack setup "${1}"
+  pack build "${1}"
+  pack package "${1}"
+  pack publish "${1}"
+  printf "\a"
+}
+function commit_in {
+  git fetch --tags -f -p
+  git describe $1 --tags --match "ci-0.*" --abbrev=0 --contains
+}
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
