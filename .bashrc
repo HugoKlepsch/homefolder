@@ -131,7 +131,7 @@ alias open='xdg-open'
 #alias tr='trash'
 
 # Git aliases
-alias gl='git log --color --pretty=format:"%C(auto)%h %Cred %<(10,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar)"'
+alias gl='git log --color --pretty=format:"%C(auto)%h %Cred %<(20,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar) %Creset%C(auto)%d"'
 alias gs='git status'
 alias gd='git diff'
 
