@@ -64,20 +64,14 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    export PS1="\[\033[38;5;14m\]\t\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]@\
+\[$(tput sgr0)\]\[\033[38;5;10m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;12m\]\w\[$(tput sgr0)\] \
+\$? \[$(tput sgr0)\]\[\033[38;5;208m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\
+\[$(tput sgr0)\] \\$ \[$(tput sgr0)\]"
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -125,8 +119,6 @@ alias tetris='telnet kirjava.xyz'
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 
-alias open='xdg-open'
-
 # Trash
 #alias tr='trash'
 
@@ -150,6 +142,11 @@ function commit_in {
   git describe $1 --tags --match "ci-0.*" --abbrev=0 --contains
 }
 
+# Conditional env in devcons or not (relies on override exporting name to this env var)
+if [[ -n "$RTK_DEVCON_INSTANCE" ]]; then
+  source "/workspaces/awn/setup.bash" hklepsch  # setup env in devcon
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -161,8 +158,5 @@ if ! shopt -oq posix; then
     fi
 fi
 
-: <<'END_COMMENT'
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-END_COMMENT
+# Source asdf (added by deps.bash)
+. "$HOME/.asdf/asdf.sh"
