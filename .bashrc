@@ -1,8 +1,5 @@
 export TERM=xterm-256color
 
-export ANDROID_HOME='/home/hugo/Android/Sdk'
-export ANDROID_NDK_HOME='/home/hugo/Android/Sdk/ndk-bundle'
-
 # So that less can display emoji
 export LESSCHARSET=utf-8
 alias less='less -r'
@@ -35,11 +32,6 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -113,14 +105,9 @@ alias vi='vim'
 alias vim='vim'
 alias dong='printf "\a"'
 
-alias tetris='telnet kirjava.xyz'
-
 # Docker garbo
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
-
-# Trash
-#alias tr='trash'
 
 # Git aliases
 alias gl='git log --color --pretty=format:"%C(auto)%h %Cred %<(20,trunc)%an %Creset%C(auto)%s %Cgreen(%cr,%ar) %Creset%C(auto)%d"'
@@ -128,24 +115,6 @@ alias gs='git status'
 alias gd='git diff'
 
 alias resetswap='sudo swapoff -a && sudo swapon -a'
-
-# Work aliases
-function buildit {
-  pack setup "${1}"
-  pack build "${1}"
-  pack package "${1}"
-  pack publish "${1}"
-  printf "\a"
-}
-function commit_in {
-  git fetch --tags -f -p
-  git describe $1 --tags --match "ci-0.*" --abbrev=0 --contains
-}
-
-# Conditional env in devcons or not (relies on override exporting name to this env var)
-if [[ -n "$RTK_DEVCON_INSTANCE" ]]; then
-  source "/workspaces/awn/setup.bash" hklepsch  # setup env in devcon
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -157,6 +126,3 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
-
-# Source asdf (added by deps.bash)
-. "$HOME/.asdf/asdf.sh"
