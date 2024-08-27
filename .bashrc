@@ -111,7 +111,7 @@ alias cd='cdls'
 alias l='ls -CF'
 alias vi='vim'
 alias vim='vim'
-alias dong='printf "\a"'
+alias dong='ret=$?; printf "\a"; (exit $ret)'
 
 alias tetris='telnet kirjava.xyz'
 
